@@ -14,7 +14,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run tslint && npm run pretty && npm run test"
+      "pre-commit": "npm run tslint && npm run pretty"
     }
   },
   "author": "bakuzan",

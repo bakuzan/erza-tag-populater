@@ -1,7 +1,7 @@
 import { query as medQuery } from 'medea';
 
 export async function query<T = any>(
-  query: string,
+  gqlQuery: string,
   variables: { [key: string]: any }
 ): Promise<T> {
   const endpoint = process.env.API_ENDPOINT;
@@ -13,7 +13,7 @@ export async function query<T = any>(
   try {
     const response = await medQuery(endpoint, {
       body: JSON.stringify({
-        query,
+        query: gqlQuery,
         variables
       })
     });

@@ -9,7 +9,17 @@ const writeAsync = promisify(fs.writeFile);
 const ONE_HOUR = 1000 * 60 * 60;
 const CACHE_STALE_TIME = ONE_HOUR;
 
-export default async function fetchPage(key: string, url: string) {
+async function fetchPage(
+  key: string,
+  url: string,
+  exitOnError: true
+): Promise<CheerioStatic>;
+async function fetchPage(
+  key: string,
+  url: string,
+  exitOnError: false
+): Promise<CheerioStatic | null>;
+async function fetchPage(key: string, url: string, exitOnError = true) {
   const filename = path.resolve(
     path.join(__dirname, '../cache', `${key}.html`)
   );
@@ -39,7 +49,14 @@ export default async function fetchPage(key: string, url: string) {
     return cheerio.load(html);
   } catch (e) {
     console.log(`Request for ${key} failed.`);
-    console.error(e);
-    process.exit(1);
+
+    if (exitOnError) {
+      console.error(e);
+      process.exit(1);
+    } else {
+      return null;
+    }
   }
 }
+
+export default fetchPage;

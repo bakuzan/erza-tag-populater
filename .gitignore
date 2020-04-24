@@ -1,4 +1,7 @@
+# Folders
 node_modules
-cache/*.html
-output/*.json
+
+# Files
 .env
+**/cache/*.html
+**/output/*.json

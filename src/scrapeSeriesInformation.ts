@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import URL from 'url';
 
 import { writeFileAsync } from 'medea';
 
@@ -9,6 +10,7 @@ import { ResultSeries } from './interfaces/ResultSeries';
 import { query } from './utils/query';
 import fetchPage from './utils/readCachedFile';
 import queries from './queries';
+import scrapeHandlers from './scrapeHandlers';
 
 const pageSize = 50;
 
@@ -20,6 +22,7 @@ async function getSeriesItems(type: SeriesType) {
   try {
     fs.accessSync(filename, fs.constants.R_OK);
     console.log(`Reading ${type} from file.`);
+
     const data = fs.readFileSync(filename, 'utf-8');
     return JSON.parse(data) as Series[];
   } catch (err) {
@@ -49,24 +52,60 @@ async function getSeriesItems(type: SeriesType) {
 
 export default async function scrapeSeriesInformation(type: SeriesType) {
   const items = await getSeriesItems(type);
+
+  const noLink: Series[] = [];
+  const badLink: Series[] = [];
+  const noHandler: Series[] = [];
   const results: ResultSeries[] = [];
 
   for (const series of items) {
     if (!series.link) {
-      results.push({ ...series, newTags: [] });
+      noLink.push(series);
       continue;
     }
 
     const key = `${type}_${series.id}`;
     const pageUrl = series.link;
-    const domain = ''; // TODO, GET
+    const hostname = URL.parse(pageUrl).hostname ?? 'unknown';
 
-    const $ = await fetchPage(key, pageUrl);
+    const $ = await fetchPage(key, pageUrl, false);
+    const handler = scrapeHandlers.get(hostname);
 
-    // TODO
-    // create handlers based on link domain
-    // scrape tags
-    // clean tags
-    // add to results
+    if (!$) {
+      console.log(
+        `Failed to fetch page at url: ${pageUrl}, skipping key: ${key}.`
+      );
+      badLink.push(series);
+      continue;
+    }
+
+    if (!handler) {
+      console.log(
+        `No scrape handler found for hostname: ${hostname}, skipping key: ${key}.`
+      );
+      noHandler.push(series);
+      continue;
+    }
+
+    const result = await handler($, series, pageUrl);
+    results.push(result);
+  }
+
+  const outputFilename = path.resolve(
+    path.join(__dirname, './output', `${type}_{0}.json`)
+  );
+
+  const outputs = [
+    { name: 'results', items: results },
+    { name: 'no-links', items: noLink },
+    { name: 'bad-links', items: badLink },
+    { name: 'no-handlers', items: noHandler }
+  ];
+
+  for (const o of outputs) {
+    await writeFileAsync(
+      outputFilename.replace('{0}', o.name),
+      JSON.stringify(o.items)
+    );
   }
 }
