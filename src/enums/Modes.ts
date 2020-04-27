@@ -1,3 +1,5 @@
 export enum Modes {
-  scrape = 'scrape'
+  scrape = 'scrape',
+  consolidate = 'consolidate',
+  scrapeAndMap = 'scrapeAndMap'
 }
