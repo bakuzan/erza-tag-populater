@@ -1,28 +1,54 @@
 import fs from 'fs';
 import path from 'path';
-import { promisify } from 'util';
 import got from 'got';
 import cheerio from 'cheerio';
 
-const writeAsync = promisify(fs.writeFile);
+import { writeFileAsync } from 'medea';
 
 const ONE_HOUR = 1000 * 60 * 60;
 const CACHE_STALE_TIME = ONE_HOUR;
 
+const defaultOptions = {
+  cacheDirectory: path.join(__dirname, '../cache'),
+  cacheStaleTime: CACHE_STALE_TIME,
+  exitOnError: true
+};
+
+interface FetchPageOptions {
+  cacheDirectory?: string;
+  cacheStaleTime?: number | null;
+  exitOnError?: boolean;
+}
+
 async function fetchPage(
   key: string,
   url: string,
-  exitOnError: true
+  opts?: {
+    cacheDirectory?: string;
+    cacheStaleTime?: number | null;
+    exitOnError?: true;
+  }
 ): Promise<CheerioStatic>;
 async function fetchPage(
   key: string,
   url: string,
-  exitOnError: false
+  opts: {
+    cacheDirectory?: string;
+    cacheStaleTime?: number | null;
+    exitOnError: false;
+  }
 ): Promise<CheerioStatic | null>;
-async function fetchPage(key: string, url: string, exitOnError = true) {
-  const filename = path.resolve(
-    path.join(__dirname, '../cache', `${key}.html`)
-  );
+async function fetchPage(
+  key: string,
+  url: string,
+  opts: FetchPageOptions = defaultOptions
+) {
+  const cacheDirectory = opts.cacheDirectory ?? defaultOptions.cacheDirectory;
+  const cacheStaleTime = opts.cacheStaleTime ?? defaultOptions.cacheStaleTime;
+  const exitOnError = opts.exitOnError ?? defaultOptions.exitOnError;
+
+  const noCacheTimeout = opts.cacheStaleTime === null;
+  const filename = path.resolve(path.join(cacheDirectory, `${key}.html`));
 
   try {
     fs.accessSync(filename, fs.constants.R_OK);
@@ -31,7 +57,7 @@ async function fetchPage(key: string, url: string, exitOnError = true) {
     const stats = fs.statSync(filename);
     const mtime = new Date(stats.mtime).getTime();
 
-    if (mtime + CACHE_STALE_TIME > Date.now()) {
+    if (noCacheTimeout || mtime + cacheStaleTime > Date.now()) {
       const data = fs.readFileSync(filename, 'utf-8');
       return cheerio.load(data);
     } else {
@@ -44,7 +70,7 @@ async function fetchPage(key: string, url: string, exitOnError = true) {
   try {
     const response = await got(url);
     const html = response.body;
-    await writeAsync(filename, html);
+    await writeFileAsync(filename, html);
 
     return cheerio.load(html);
   } catch (e) {

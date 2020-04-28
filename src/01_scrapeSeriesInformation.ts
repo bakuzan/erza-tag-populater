@@ -12,7 +12,7 @@ import fetchPage from './utils/readCachedFile';
 import queries from './queries';
 import scrapeHandlers from './scrapeHandlers';
 
-const pageSize = 50;
+const pageSize = 100;
 
 async function getSeriesItems(type: SeriesType) {
   const filename = path.resolve(
@@ -33,6 +33,7 @@ async function getSeriesItems(type: SeriesType) {
   const items = [];
 
   while (true) {
+    console.log(`Requesting page ${page + 1} of ${type} items...`);
     const response = await query<SeriesResponse>(queries[type], {
       paging: { size: pageSize, page }
     });
@@ -41,6 +42,7 @@ async function getSeriesItems(type: SeriesType) {
     items.push(...response.nodes);
 
     if (!response.hasMore) {
+      console.log(`All ${type} pages returned.`);
       break;
     }
   }
@@ -68,7 +70,11 @@ export default async function scrapeSeriesInformation(type: SeriesType) {
     const pageUrl = series.link;
     const hostname = URL.parse(pageUrl).hostname ?? 'unknown';
 
-    const $ = await fetchPage(key, pageUrl, false);
+    const $ = await fetchPage(key, pageUrl, {
+      cacheStaleTime: null,
+      exitOnError: false
+    });
+
     const handler = scrapeHandlers.get(hostname);
 
     if (!$) {

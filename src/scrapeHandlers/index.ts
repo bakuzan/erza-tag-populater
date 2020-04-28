@@ -1,5 +1,6 @@
 import { ScrapeHandler } from '@/interfaces/ScrapeHandler';
 import createHentaiHereHandler from './hentaihere';
+import hentaigasm from './hentaigasm';
 
 export default new Map<string, ScrapeHandler>([
   // Anime
@@ -10,6 +11,66 @@ export default new Map<string, ScrapeHandler>([
       const newTags = tags.map((node) =>
         page(node).text().toLowerCase().trim()
       );
+
+      return { ...series, newTags };
+    }
+  ],
+  [
+    'hentai.animestigma.com',
+    async (page, series) => {
+      const tags = Array.from(page('label > a'));
+      const newTags = tags.map((node) =>
+        page(node).text().toLowerCase().trim()
+      );
+
+      return { ...series, newTags };
+    }
+  ],
+  [
+    'hanime.tv',
+    async (page, series) => {
+      const tags = Array.from(page(`a.btn[href^='/browse/tags']`));
+      const newTags = tags.map((node) =>
+        page(node).text().toLowerCase().trim()
+      );
+
+      return { ...series, newTags };
+    }
+  ],
+  ['urbanhentai.com', hentaigasm],
+  ['hentaigasm.com', hentaigasm],
+  [
+    'hentaihaven.org',
+    async (page, series) => {
+      const tags = Array.from(page(`span.tags > a`));
+      const newTags = tags
+        .map((node) => page(node).text().toLowerCase().trim())
+        .filter((x, i, a) => a.indexOf(x) === i);
+
+      return { ...series, newTags };
+    }
+  ],
+  [
+    'hentai.animeholics.org',
+    async (page, series) => {
+      const tags = Array.from(page(`.entry-footer a`));
+      const newTags = tags
+        .map((node) => page(node).text().toLowerCase().trim())
+        .filter((x, i, a) => a.indexOf(x) === i);
+
+      return { ...series, newTags };
+    }
+  ],
+  [
+    'hentaiplay.net',
+    async (page, series) => {
+      const [postItem] = Array.from(page(`#content .item-post:nth-child(1)`));
+      const newTags =
+        page(postItem)
+          .attr('class')
+          ?.split(' ')
+          .filter((x) => x.startsWith('tag-'))
+          .map((x) => x.replace('tag-', '')) ?? [];
 
       return { ...series, newTags };
     }
