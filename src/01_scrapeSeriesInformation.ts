@@ -34,7 +34,7 @@ async function getSeriesItems(type: SeriesType) {
 
   while (true) {
     console.log(`Requesting page ${page + 1} of ${type} items...`);
-    const response = await query<SeriesResponse>(queries[type], {
+    const response = await query<SeriesResponse>(queries.PAGED_ITEMS[type], {
       paging: { size: pageSize, page }
     });
 

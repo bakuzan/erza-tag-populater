@@ -4,10 +4,11 @@ import { createClient } from 'medea';
 
 import scrapeSeriesInformation from './01_scrapeSeriesInformation';
 import consolidateNewTags from './02_consolidateNewTags';
+import updateSeriesTags from './03_updateSeriesTags';
 
 import { Modes } from './enums/Modes';
 import { SeriesType } from './enums/SeriesType';
-import validate from '@/utils/validate';
+import validate from './utils/validate';
 
 dotenv.config();
 
@@ -17,7 +18,7 @@ async function start() {
     .addOption({
       option: 'mode',
       shortcut: 'm',
-      description: `Process to run. Options: 'scrape', 'consolidate', or 'scrapeAndMap'`,
+      description: `Process to run. Options: 'scrape', 'consolidate', 'scrapeAndMap', or 'updateTags'`,
       validate: (_: any, value: string) => value in Modes,
       required: true
     })
@@ -48,7 +49,7 @@ async function start() {
     async () => cli.validate('mode'),
     () =>
       console.log(
-        `Invalid mode supplied. Expected one of: 'scrape', 'consolidate', or 'scrapeAndMap'`
+        `Invalid mode supplied. Expected one of: 'scrape', 'consolidate', 'scrapeAndMap', or 'updateTags'`
       )
   );
 
@@ -62,6 +63,9 @@ async function start() {
     case Modes.scrapeAndMap:
       await scrapeSeriesInformation(cli.get('type'));
       await consolidateNewTags(cli.get('type'));
+      break;
+    case Modes.updateTags:
+      await updateSeriesTags(cli.get('type'));
       break;
     default:
       console.log(`Mode case '${cli.get('mode')}' is not handled.`);

@@ -1,7 +1,8 @@
 import { SeriesType } from './enums/SeriesType';
 
 export default {
-  [SeriesType.anime]: `
+  PAGED_ITEMS: {
+    [SeriesType.anime]: `
   query AnimeItems($paging: Paging) {
     value: animePaged(isAdult: true, paging: $paging) {
       hasMore
@@ -17,7 +18,7 @@ export default {
     }
   }
   `,
-  [SeriesType.manga]: `
+    [SeriesType.manga]: `
   query MangaItems($paging: Paging) {
     value: mangaPaged(isAdult: true, paging: $paging) {
       hasMore
@@ -33,4 +34,9 @@ export default {
     }
   }
   `
+  },
+  TAGS_UPDATE: {
+    [SeriesType.anime]: ``,
+    [SeriesType.manga]: ``
+  }
 };

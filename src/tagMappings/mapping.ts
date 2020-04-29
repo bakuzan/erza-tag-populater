@@ -3,15 +3,20 @@ export default new Map<string, string>([
   ['partially colored', 'partially coloured'],
   ['color', 'coloured'],
 
+  ['oral', 'blowjob'],
   ['fellatio', 'blowjob'],
   ['blow job', 'blowjob'],
   ['double fellatio', 'multiple blowjob'],
   ['throat fucking', 'deepthroat'],
   ['deep throat', 'deepthroat'],
 
+  ['oppai', 'boobjob'],
   ['paizuri', 'boobjob'],
   ['mammary intercourse', 'boobjob'],
+  ['tits-fuck', 'boobjob'],
+  ['boob job', 'boobjob'],
   ['multiple paizuri', 'multiple boobjob'],
+  ['blonde.boob job', 'boobjob'],
   ['rimming', 'rimjob'],
   ['analingus (rimjob)', 'rimjob'],
   ['foot licking', 'foot fetish'],
@@ -26,13 +31,18 @@ export default new Map<string, string>([
   ['heart pupils', 'heart-eyes'],
 
   ['big breast', 'big breasts'],
+  ['big boobs', 'big breasts'],
   ['busty', 'big breasts'],
   ['large breasts', 'big breasts'],
+  ['huge boobs', 'big breasts'],
+  ['huge breasts', 'big breasts'],
+  ['gigantic breasts', 'big breasts'],
   ['bakunyuu', 'big breasts'],
   ['booty', 'big ass'],
 
   ['female dominance', 'femdom'],
   ['male dominance', 'domination'],
+  ['maledom', 'domination'],
   ['sexually dominant', 'domination'],
 
   ['threesome (mff)', 'ffm threesome'],
@@ -51,6 +61,7 @@ export default new Map<string, string>([
   ['kogal', 'gyaru'],
   ['tanlines', 'tan lines'],
   ['tanned', 'dark skin'],
+  ['dark-skinned girl', 'dark skin'],
   ['happy sex', 'wholesome'],
   ['romance', 'wholesome'],
 
@@ -63,6 +74,7 @@ export default new Map<string, string>([
   ['father and daughter', 'incest'],
   ['mother and son', 'incest'],
   ['sister', 'incest'],
+  ['older sister', 'incest'],
 
   ['swimsuit/s', 'swimsuit'],
   ['bikini', 'swimsuit'],
@@ -77,10 +89,14 @@ export default new Map<string, string>([
   ['maids', 'maid'],
   ['office ladies', 'office lady'],
   ['school girls', 'school girl'],
+  ['school-girls', 'school girl'],
   ['schoolgirl', 'school girl'],
   ['schoolgirls', 'school girl'],
   ['female student', 'school girl'],
   ['female teacher', 'teacher'],
+  ['horny-slut', 'slut'],
+  ['sluts', 'slut'],
+  ['delinquents', 'delinquent'],
 
   ['schoolgirl outfit', 'school girl uniform'],
   ['schoolgirl uniform', 'school girl uniform'],
@@ -89,6 +105,7 @@ export default new Map<string, string>([
   ['cat girls', 'cat girl'],
   ['demon', 'monster'],
   ['majin', 'monster'],
+  ['elf-elves', 'elf'],
 
   ['outdoor intercourse', 'public sex'],
   ['outdoor sex', 'public sex'],
@@ -104,6 +121,7 @@ export default new Map<string, string>([
   ['orgy', 'group sex'],
   ['gang bang', 'gang-bang'],
   ['gangbang', 'gang-bang'],
+  ['ganggang', 'gang-bang'],
 
   ['zettai ryouiki', 'thigh highs'],
 
@@ -120,11 +138,13 @@ export default new Map<string, string>([
   ['filmed', 'filming'],
   ['sex tape', 'filming'],
   ['golden shower', 'urination'],
+  ['piss drinking', 'urination'],
 
   ['safer sex', 'condom'],
   ['double-penatration', 'double penetration'],
 
   ['ntr', 'netorare'],
+  ['netorera', 'netorare'],
 
   ['sixty nine', 'sixty-nine'],
   ['69', 'sixty-nine'],
@@ -139,5 +159,6 @@ export default new Map<string, string>([
   ['kunoichi (ninja girls)', 'kunoichi'],
   ['ninja', 'kunoichi'],
 
-  ['cum swap', 'cum play']
+  ['cum swap', 'cum play'],
+  ['girls only', 'yuri']
 ]);
