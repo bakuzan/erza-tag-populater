@@ -1,7 +1,9 @@
 export default new Map<string, string>([
   ['full color', 'full colour'],
   ['partially colored', 'partially coloured'],
-  ['color', 'coloured'],
+  ['color', 'partially coloured'],
+
+  ['un-censored', 'uncensored'],
 
   ['oral', 'blowjob'],
   ['fellatio', 'blowjob'],
@@ -15,13 +17,17 @@ export default new Map<string, string>([
   ['mammary intercourse', 'boobjob'],
   ['tits-fuck', 'boobjob'],
   ['boob job', 'boobjob'],
+  ['boobs job', 'boobjob'],
   ['multiple paizuri', 'multiple boobjob'],
   ['blonde.boob job', 'boobjob'],
   ['rimming', 'rimjob'],
   ['analingus (rimjob)', 'rimjob'],
   ['foot licking', 'foot fetish'],
+  ['foot job', 'footjob'],
 
   ['hand job', 'handjob'],
+  ['hairy armpit', 'hairy armpits'],
+  ['hypnotism', 'hypnosis'],
 
   ['group', 'group sex'],
   ['group intercourse', 'group sex'],
@@ -29,10 +35,13 @@ export default new Map<string, string>([
   ['onani', 'masturbation'],
 
   ['heart pupils', 'heart-eyes'],
+  ['symbol shaped pupils', 'unusual pupils'],
+  ['sumata', 'thigh sex'],
 
   ['big breast', 'big breasts'],
   ['big boobs', 'big breasts'],
   ['busty', 'big breasts'],
+  ['large breast', 'big breasts'],
   ['large breasts', 'big breasts'],
   ['huge boobs', 'big breasts'],
   ['huge breasts', 'big breasts'],
@@ -41,6 +50,7 @@ export default new Map<string, string>([
   ['booty', 'big ass'],
 
   ['female dominance', 'femdom'],
+  ['submission', 'femdom'],
   ['male dominance', 'domination'],
   ['maledom', 'domination'],
   ['sexually dominant', 'domination'],
@@ -48,6 +58,7 @@ export default new Map<string, string>([
   ['threesome (mff)', 'ffm threesome'],
   ['threesome (mmf)', 'mmf threesome'],
   ['threesome with sisters', 'ffm threesome'],
+  ['threesome (other)', 'threesome'],
   ['lolicon', 'loli'],
   ['low lolicon', 'loli'],
   ['shotacon', 'shota'],
@@ -65,7 +76,7 @@ export default new Map<string, string>([
   ['happy sex', 'wholesome'],
   ['romance', 'wholesome'],
 
-  ['monster girl', 'demi-human'],
+  ['vampire', 'demi-human'],
   ['brother and sister', 'incest'],
   ['brother-sister incest', 'incest'],
   ['mother-son incest', 'incest'],
@@ -74,12 +85,16 @@ export default new Map<string, string>([
   ['father and daughter', 'incest'],
   ['mother and son', 'incest'],
   ['sister', 'incest'],
+  ['sisters', 'incest'],
   ['older sister', 'incest'],
 
+  ['swimsuite', 'swimsuit'],
   ['swimsuit/s', 'swimsuit'],
   ['bikini', 'swimsuit'],
 
+  ['virign', 'defloration'],
   ['virgin', 'defloration'],
+  ['virgins', 'defloration'],
   ['virginity', 'defloration'],
   ['deflowering', 'defloration'],
 
@@ -87,6 +102,7 @@ export default new Map<string, string>([
   ['housewives', 'housewife'],
   ['nurses', 'nurse'],
   ['maids', 'maid'],
+  ['nuns', 'nun'],
   ['office ladies', 'office lady'],
   ['school girls', 'school girl'],
   ['school-girls', 'school girl'],
@@ -97,19 +113,33 @@ export default new Map<string, string>([
   ['horny-slut', 'slut'],
   ['sluts', 'slut'],
   ['delinquents', 'delinquent'],
+  ['waitresses', 'waitress'],
+  ['witches', 'witch'],
+  ['rich girl', 'ojousama'],
+  ['princesses', 'princess'],
+  ['teachers', 'teacher'],
+  ['slavery', 'slave'],
+  ['sex slaves', 'slave'],
+  ['monsters', 'monster'],
+  ['bunny girls', 'bunny girl'],
 
   ['schoolgirl outfit', 'school girl uniform'],
   ['schoolgirl uniform', 'school girl uniform'],
 
   ['monster girls', 'monster girl'],
   ['cat girls', 'cat girl'],
-  ['demon', 'monster'],
-  ['majin', 'monster'],
+  ['catgirl', 'cat girl'],
+  ['demon', 'demi-human'],
+  ['demon girl', 'demi-human'],
+  ['demon girls', 'demi-human'],
+  ['majin', 'demi-human'],
+  ['juujin', 'demi-human'],
   ['elf-elves', 'elf'],
 
   ['outdoor intercourse', 'public sex'],
   ['outdoor sex', 'public sex'],
   ['facesitting', 'face sitting'],
+  ['bukakke', 'bukkake'],
 
   ['toys', 'sex toys'],
   ['dildos - vibrators', 'sex toys'],
@@ -124,6 +154,7 @@ export default new Map<string, string>([
   ['ganggang', 'gang-bang'],
 
   ['zettai ryouiki', 'thigh highs'],
+  ['stocking', 'stockings'],
 
   ['nakadashi', 'creampie'],
   ['cream pie', 'creampie'],
@@ -132,6 +163,7 @@ export default new Map<string, string>([
   ['plot continuity', 'story arc'],
   ['plot', 'story arc'],
   ['porn with plot', 'story arc'],
+  ['plot with porn', 'story heavy'],
 
   ['chikan', 'groping'],
   ['molestation', 'groping'],
@@ -151,7 +183,11 @@ export default new Map<string, string>([
 
   ['drug', 'drugs'],
   ['guy getting raped', 'rape (female aggressor)'],
+  ['reverse rape', 'rape (female aggressor)'],
   ['rape.yuri', 'rape (female on female)'],
+  ['forced', 'rape'],
+  ['forced sex', 'rape'],
+  ['megane', 'glasses'],
 
   ['stomach deformation', 'distention'],
   ['hot springs visit', 'hot springs'],
@@ -160,5 +196,30 @@ export default new Map<string, string>([
   ['ninja', 'kunoichi'],
 
   ['cum swap', 'cum play'],
-  ['girls only', 'yuri']
+  ['cum swapping', 'cum play'],
+  ['girls only', 'yuri'],
+  ['females only', 'yuri'],
+
+  ['mind contro', 'mind control'],
+  ['tentacles', 'tentacle'],
+
+  ['coslay', 'cosplay'],
+  ['cosplaying', 'cosplay'],
+  ['miko', 'shrine miko'],
+  ['muscle', 'muscles'],
+
+  ['twin tail', 'twintails'],
+  ['twin tails', 'twintails'],
+  ['adultery', 'cheating'],
+  ['brides', 'bride'],
+
+  ['enema play', 'enema'],
+  ['bestiality', 'beastiality'],
+  ['dickgirl on male', 'futa x male'],
+  ['cross-dressing', 'crossdressing'],
+
+  ['exhibition', 'exhibitionism'],
+  ['pregnancy', 'pregnant'],
+  ['drunk intercourse', 'drunk'],
+  ['lacation', 'lactaion']
 ]);

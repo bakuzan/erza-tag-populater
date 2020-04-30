@@ -29,6 +29,7 @@
     "lint-staged": "^10.1.7",
     "medea": "file:../medea",
     "prettier": "^2.0.4",
+    "stdio": "^2.1.1",
     "ts-node": "^8.9.0",
     "tsconfig-paths": "^3.9.0",
     "tslint": "^6.1.1",

@@ -19,6 +19,7 @@ export async function query<T = any>(
     });
 
     if (!response.success) {
+      console.log(response.error);
       process.exit(1);
     }
 

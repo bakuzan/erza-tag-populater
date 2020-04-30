@@ -1,5 +1,5 @@
-export interface TagUpdateResponse {
-  success: boolean;
-  errorMessages: string[];
+import { MutationResponse } from './MutationResponse';
+
+export interface TagUpdateResponse extends MutationResponse {
   warningMessages: string[];
 }
