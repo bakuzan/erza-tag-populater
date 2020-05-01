@@ -1,60 +1,20 @@
-import fs from 'fs';
 import path from 'path';
 import URL from 'url';
 
 import { writeFileAsync } from 'medea';
 
 import { SeriesType } from './enums/SeriesType';
-import { SeriesResponse, Series } from './interfaces/Series';
+import { Series } from './interfaces/Series';
 import { ResultSeries } from './interfaces/ResultSeries';
-import { query } from './utils/query';
 import fetchPage from './utils/readCachedFile';
-import queries from './queries';
+import getPagedSeriesItems from './utils/getPagedSeriesItems';
+
 import scrapeHandlers from './scrapeHandlers';
 
-const pageSize = 100;
-
-async function getSeriesItems(type: SeriesType) {
-  const filename = path.resolve(
-    path.join(__dirname, './output', `${type}.json`)
-  );
-
-  try {
-    fs.accessSync(filename, fs.constants.R_OK);
-    console.log(`Reading ${type} from file.`);
-
-    const data = fs.readFileSync(filename, 'utf-8');
-    return JSON.parse(data) as Series[];
-  } catch (err) {
-    console.error(`No file for ${type}, will request.`);
-  }
-
-  let page = 0;
-  const items = [];
-
-  while (true) {
-    console.log(`Requesting page ${page + 1} of ${type} items...`);
-    const response = await query<SeriesResponse>(queries.PAGED_ITEMS[type], {
-      paging: { size: pageSize, page }
-    });
-
-    page++;
-    items.push(...response.nodes);
-
-    if (!response.hasMore) {
-      console.log(`All ${type} pages returned.`);
-      break;
-    }
-  }
-
-  await writeFileAsync(filename, JSON.stringify(items));
-
-  return items;
-}
-
-export default async function scrapeSeriesInformation(type: SeriesType) {
-  const items = await getSeriesItems(type);
-
+export async function scrapeSeriesInformation(
+  type: SeriesType,
+  items: Series[]
+) {
   const noLink: Series[] = [];
   const badLink: Series[] = [];
   const noHandler: Series[] = [];
@@ -96,6 +56,22 @@ export default async function scrapeSeriesInformation(type: SeriesType) {
     const result = await handler($, series, pageUrl);
     results.push(result);
   }
+
+  return {
+    results,
+    noLink,
+    badLink,
+    noHandler
+  };
+}
+
+export async function scrapeSeriesInformationToFile(type: SeriesType) {
+  const items = await getPagedSeriesItems(type);
+
+  const { results, noLink, badLink, noHandler } = await scrapeSeriesInformation(
+    type,
+    items
+  );
 
   const outputFilename = path.resolve(
     path.join(__dirname, './output', `${type}_{0}.json`)

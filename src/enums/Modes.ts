@@ -3,5 +3,6 @@ export enum Modes {
   consolidate = 'consolidate',
   scrapeAndMap = 'scrapeAndMap',
   updateTags = 'updateTags',
-  removeTag = 'removeTag'
+  removeTag = 'removeTag',
+  processSelectedSeries = 'processSelectedSeries'
 }

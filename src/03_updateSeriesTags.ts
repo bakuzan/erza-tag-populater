@@ -8,22 +8,10 @@ import { ProcessedSeries } from './interfaces/ProcessedSeries';
 import { TagUpdateResponse } from './interfaces/TagUpdateResponse';
 import { query } from './utils/query';
 
-export default async function updateSeriesTags(type: SeriesType) {
-  const filename = path.resolve(
-    path.join(__dirname, './output', `${type}_processed.json`)
-  );
-
-  const fileResponse = await readIn(filename, {
-    read: true,
-    shouldLog: true
-  });
-
-  if (!fileResponse.success) {
-    console.error(`Read failed.\r\n`, fileResponse.error);
-    process.exit(0);
-  }
-
-  const data: ProcessedSeries[] = JSON.parse(fileResponse.data);
+export async function updateSeriesTags(
+  type: SeriesType,
+  data: ProcessedSeries[]
+) {
   const failed = [];
 
   for (const series of data) {
@@ -52,4 +40,23 @@ export default async function updateSeriesTags(type: SeriesType) {
   console.log(
     `\r\nTag updates complete for ${data.length - failed.length} series.`
   );
+}
+
+export async function updateSeriesTagsFromFile(type: SeriesType) {
+  const filename = path.resolve(
+    path.join(__dirname, './output', `${type}_processed.json`)
+  );
+
+  const fileResponse = await readIn(filename, {
+    read: true,
+    shouldLog: true
+  });
+
+  if (!fileResponse.success) {
+    console.error(`Read failed.\r\n`, fileResponse.error);
+    process.exit(0);
+  }
+
+  const data: ProcessedSeries[] = JSON.parse(fileResponse.data);
+  await updateSeriesTags(type, data);
 }

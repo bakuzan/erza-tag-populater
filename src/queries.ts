@@ -1,6 +1,34 @@
 import { SeriesType } from './enums/SeriesType';
 
 export default {
+  BY_ID: {
+    [SeriesType.anime]: `
+    query Anime($id: Int!) {
+      value: animeById(id: $id) {
+        id
+        title
+        link
+        tags {
+          id
+          name
+        }
+      }
+    }
+    `,
+    [SeriesType.manga]: `
+    query Manga($id: Int!) {
+      value: mangaById(id: $id) {
+        id
+        title
+        link
+        tags {
+          id
+          name
+        }
+      }
+    }
+    `
+  },
   PAGED_ITEMS: {
     [SeriesType.anime]: `
     query AnimeItems($paging: Paging) {
