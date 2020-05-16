@@ -5,9 +5,9 @@ import queries from '@/queries';
 
 export default async function getSeriesItems(
   type: SeriesType,
-  idString: string
+  idString: string | number
 ) {
-  const ids = idString
+  const ids = `${idString}`
     .split(',')
     .map((x) => Number(x))
     .filter((x) => x && !isNaN(x));

@@ -57,8 +57,14 @@ async function start() {
     .addOption({
       option: 'ids',
       description: `Comma separated list of series Id to be updated, required if mode is 'processSelectedSeries'`,
-      validate: (_: any, value: string) => {
-        if (!value || typeof value !== 'string') {
+      validate: (_: any, value: any) => {
+        if (!value) {
+          return false;
+        }
+
+        if (typeof value === 'number') {
+          return true;
+        } else if (typeof value !== 'string') {
           return false;
         }
 
