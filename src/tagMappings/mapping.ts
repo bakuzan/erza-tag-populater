@@ -39,6 +39,7 @@ export default new Map<string, string>([
   ['sumata', 'thigh sex'],
 
   ['big breast', 'big breasts'],
+  ['big boob', 'big breasts'],
   ['big boobs', 'big breasts'],
   ['busty', 'big breasts'],
   ['large breast', 'big breasts'],
@@ -221,5 +222,7 @@ export default new Map<string, string>([
   ['exhibition', 'exhibitionism'],
   ['pregnancy', 'pregnant'],
   ['drunk intercourse', 'drunk'],
-  ['lacation', 'lactaion']
+  ['lacation', 'lactaion'],
+
+  ['first person perspective', 'pov']
 ]);
