@@ -304,5 +304,6 @@ export default [
   'military',
   'blue eyes',
   'breast fondling',
-  'orcsoft'
+  'orcsoft',
+  'vtuber'
 ];
