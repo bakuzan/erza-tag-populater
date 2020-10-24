@@ -305,5 +305,9 @@ export default [
   'blue eyes',
   'breast fondling',
   'orcsoft',
-  'vtuber'
+  'vtuber',
+  'showten',
+  'five ways',
+  'breast expansion',
+  'digital works'
 ];

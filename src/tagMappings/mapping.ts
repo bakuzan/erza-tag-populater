@@ -102,6 +102,7 @@ export default new Map<string, string>([
   ['housewife-housewives', 'housewife'],
   ['housewives', 'housewife'],
   ['nurses', 'nurse'],
+  ['murse', 'nurse'],
   ['maids', 'maid'],
   ['nuns', 'nun'],
   ['office ladies', 'office lady'],
@@ -224,5 +225,6 @@ export default new Map<string, string>([
   ['drunk intercourse', 'drunk'],
   ['lacation', 'lactaion'],
 
-  ['first person perspective', 'pov']
+  ['first person perspective', 'pov'],
+  ['piercing', 'piercings']
 ]);
