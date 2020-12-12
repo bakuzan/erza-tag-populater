@@ -41,6 +41,7 @@ export default new Map<string, string>([
   ['big breast', 'big breasts'],
   ['big boob', 'big breasts'],
   ['big boobs', 'big breasts'],
+  ['bib boobs', 'big breasts'],
   ['busty', 'big breasts'],
   ['large breast', 'big breasts'],
   ['large breasts', 'big breasts'],
@@ -173,6 +174,7 @@ export default new Map<string, string>([
   ['sex tape', 'filming'],
   ['golden shower', 'urination'],
   ['piss drinking', 'urination'],
+  ['pee', 'urination'],
 
   ['safer sex', 'condom'],
   ['double-penatration', 'double penetration'],
