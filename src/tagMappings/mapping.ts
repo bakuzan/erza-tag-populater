@@ -181,6 +181,7 @@ export default new Map<string, string>([
 
   ['ntr', 'netorare'],
   ['netorera', 'netorare'],
+  ['netorari', 'netori'],
 
   ['sixty nine', 'sixty-nine'],
   ['69', 'sixty-nine'],

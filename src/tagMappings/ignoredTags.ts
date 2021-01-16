@@ -310,5 +310,8 @@ export default [
   'five ways',
   'breast expansion',
   'digital works',
-  'mary janes'
+  'mary janes',
+  'cumflation',
+  'horse cock',
+  'transformation'
 ];
