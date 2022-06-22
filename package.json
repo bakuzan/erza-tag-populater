@@ -24,7 +24,7 @@
     "@types/minimist": "^1.2.0",
     "cheerio": "^1.0.0-rc.3",
     "dotenv": "^8.2.0",
-    "got": "^11.0.1",
+    "got": "^11.8.5",
     "husky": "^4.2.5",
     "lint-staged": "^10.1.7",
     "medea": "file:../medea",
