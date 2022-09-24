@@ -229,5 +229,7 @@ export default new Map<string, string>([
   ['lacation', 'lactaion'],
 
   ['first person perspective', 'pov'],
-  ['piercing', 'piercings']
+  ['piercing', 'piercings'],
+  ['faical', 'facial'],
+  ['facil', 'facial']
 ]);
